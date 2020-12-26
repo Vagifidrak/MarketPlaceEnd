@@ -1,4 +1,5 @@
-﻿@model IEnumerable<MarketPlace.Models.tbl_services>
+﻿@model MarketPlace.ViewModel.ServiceVM
+    @using MarketPlace.Utilites
 @{
     ViewBag.Title = "ServiceList";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -36,30 +37,36 @@
                 <div class="card filter-card">
                     <div class="card-body">
                         <h4 class="card-title mb-4">Axtarış Filtri</h4>
-                        <form id="search_form">
                             <div class="filter-widget">
                                 <div class="filter-list">
                                     <h4 class="filter-title">Açar söz</h4>
-                                    <input type="text" class="form-control" placeholder="Nə axtarırsan?">
+                                    <form id="search_form" action="@Url.Action("ServiceList","Categories")">
+                                        
+                                        <div class="input-group">
+                                            <input type="text" name="searchTerm" class="form-control" placeholder="Nə axtarırsan?">
+                                            <input type="hidden" name="sortBy" value="@Model.sortBy" />
+                                            <input value="Axtar" class="input-group-append" type="submit" />
+                                        </div>
+                                    </form>
                                 </div>
                                 <div class="filter-list">
                                     <h4 class="filter-title">Sırala</h4>
-                                    <select class="form-control selectbox select">
+                                    <select onchange="location=this.value" class="form-control selectbox select">
                                         <option></option>
-												<option>Qiymət aşağıdan yüksəyə</option>
-												<option>Qiymət yüksəkdən aşağı</option>
-												<option>Ən yeni</option>
+												<option value="@Url.Action("ServiceList","Categories",new {searchTerm=Model.searchTerm,sortBy=(int)ServiceEnum.PriceLowToHigh })">Qiymət aşağıdan yüksəyə</option>
+												<option value="@Url.Action("ServiceList","Categories",new {searchTerm=Model.searchTerm,sortBy=(int)ServiceEnum.PriceHighToLow})">Qiymət yüksəkdən aşağı</option>
+												<option value="@Url.Action("ServiceList","Categories",new {searchTerm=Model.searchTerm,sortBy=(int)ServiceEnum.Popularity })">Ən yeni</option>
                                     </select>
                                 </div>
                                 <div class="filter-list">
                                     <h4 class="filter-title">Kateqoriyalar</h4>
-                                    <select class="form-control form-control selectbox select">
+                                    <select onchange="location=this.value" class="form-control form-control selectbox select">
                                         <option>Bütün kateqoriyalar</option>
-                                        <option>Kompüter</option>
-                                        <option>Avtomobil</option>
-                                        <option>Təmizlik</option>
-                                        <option>Elektrik</option>
-                                        <option>Tikinti</option>
+                                        @foreach (var item in Model.categories)
+                                        {
+                                            <option  value="@Url.Action("ServiceList","Categories",new { id=item.ServiceCategoryId,sortBy=Model.sortBy})" >@item.Name</option>
+
+                                        }
                                     </select>
                                 </div>
                                 <div class="filter-list">
@@ -68,7 +75,6 @@
                                 </div>
                             </div>
                             <button class="btn btn-primary pl-5 pr-5 btn-block get_services" type="button">Axtarış</button>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -85,7 +91,7 @@
                 </div>
                 <div>
                     <div class="row">
-                        @foreach (var x in Model)
+                        @foreach (var x in Model.services)
                         {
                             <div class="col-lg-4 col-md-6">
                                 <div class="service-widget">
@@ -96,7 +102,7 @@
                                         <div class="item-info">
                                             <div class="service-user">
                                                 <a href="#">
-                                                    <img src="@x.tbl_user.tbl_photo.URL" alt="">
+                                                    @*<img src="@x.tbl_user.tbl_photo.URL" alt="">*@
                                                 </a>
                                                 <span class="service-price">@x.Price AZN</span>
                                             </div>
@@ -132,438 +138,6 @@
                                 </div>
                             </div>
                         }
-                        <div class="col-lg-4 col-md-6">
-                            <div class="service-widget">
-                                <div class="service-img">
-                                    <a href="service-details.html">
-                                        <img class="img-fluid serv-img" alt="Service Image" src="~/PublicFront/assets/img/services/service-02.jpg">
-                                    </a>
-                                    <div class="item-info">
-                                        <div class="service-user">
-                                            <a href="#">
-                                                <img src="~/PublicFront/assets/img/customer/user-02.jpg" alt="">
-                                            </a>
-                                            <span class="service-price">50 Azn</span>
-                                        </div>
-                                        <div class="cate-list">
-                                            <a class="bg-yellow" href="service-details.html">Avtomobillərin təmiri</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="service-content">
-                                    <h3 class="title">
-                                        <a href="service-details.html">Yag deyisme</a>
-                                    </h3>
-                                    <div class="rating">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <span class="d-inline-block average-rating">(5)</span>
-                                    </div>
-                                    <div class="user-info">
-                                        <div class="row">
-                                            <span class="col-auto ser-contact"><i class="fas fa-phone mr-1"></i> <span>xxxxxxxx85</span></span>
-                                            <span class="col ser-location"><span>Baki, Dernegul</span>  <i class="fas fa-map-marker-alt ml-1"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="service-widget">
-                                <div class="service-img">
-                                    <a href="service-details.html">
-                                        <img class="img-fluid serv-img" alt="Service Image" src="~/PublicFront/assets/img/services/service-03.jpg">
-                                    </a>
-                                    <div class="item-info">
-                                        <div class="service-user">
-                                            <a href="#">
-                                                <img src="~/PublicFront/assets/img/customer/user-03.jpg" alt="">
-                                            </a>
-                                            <span class="service-price">45 Azn</span>
-                                        </div>
-                                        <div class="cate-list">
-                                            <a class="bg-yellow" href="service-details.html">Elektrik</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="service-content">
-                                    <h3 class="title">
-                                        <a href="service-details.html">Elektrik Avadanliqlarinin Təmiri</a>
-                                    </h3>
-                                    <div class="rating">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span class="d-inline-block average-rating">(4.5)</span>
-                                    </div>
-                                    <div class="user-info">
-                                        <div class="row">
-                                            <span class="col-auto ser-contact"><i class="fas fa-phone mr-1"></i> <span>xxxxxxxx30</span></span>
-                                            <span class="col ser-location"><span>Sumqayit, Merkez</span>  <i class="fas fa-map-marker-alt ml-1"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="service-widget">
-                                <div class="service-img">
-                                    <a href="service-details.html">
-                                        <img class="img-fluid serv-img" alt="Service Image" src="~/PublicFront/assets/img/services/service-04.jpg">
-                                    </a>
-                                    <div class="item-info">
-                                        <div class="service-user">
-                                            <a href="#">
-                                                <img src="~/PublicFront/assets/img/customer/user-04.jpg" alt="">
-                                            </a>
-                                            <span class="service-price">14 Azn</span>
-                                        </div>
-                                        <div class="cate-list">
-                                            <a class="bg-yellow" href="service-details.html">Avtomobil temiri</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="service-content">
-                                    <h3 class="title">
-                                        <a href="service-details.html">Buxar Avtomobillərin Yuyulması</a>
-                                    </h3>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span class="d-inline-block average-rating">(0)</span>
-                                    </div>
-                                    <div class="user-info">
-                                        <div class="row">
-                                            <span class="col-auto ser-contact"><i class="fas fa-phone mr-1"></i> <span>xxxxxxxx74</span></span>
-                                            <span class="col ser-location"><span>Baki, Yasamal</span>  <i class="fas fa-map-marker-alt ml-1"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="service-widget">
-                                <div class="service-img">
-                                    <a href="service-details.html">
-                                        <img class="img-fluid serv-img" alt="Service Image" src="~/PublicFront/assets/img/services/service-05.jpg">
-                                    </a>
-                                    <div class="item-info">
-                                        <div class="service-user">
-                                            <a href="#">
-                                                <img src="~/PublicFront/assets/img/customer/user-05.jpg" alt="">
-                                            </a>
-                                            <span class="service-price">30 Azn</span>
-                                        </div>
-                                        <div class="cate-list">
-                                            <a class="bg-yellow" href="service-details.html">Təmizlik</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="service-content">
-                                    <h3 class="title">
-                                        <a href="service-details.html">Ev Təmizlik xidmətləri</a>
-                                    </h3>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span class="d-inline-block average-rating">(0)</span>
-                                    </div>
-                                    <div class="user-info">
-                                        <div class="row">
-                                            <span class="col-auto ser-contact"><i class="fas fa-phone mr-1"></i> <span>xxxxxxxx91</span></span>
-                                            <span class="col ser-location"><span>Baki, Ulduz</span>  <i class="fas fa-map-marker-alt ml-1"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="service-widget">
-                                <div class="service-img">
-                                    <a href="service-details.html">
-                                        <img class="img-fluid serv-img" alt="Service Image" src="~/PublicFront/assets/img/services/service-06.jpg">
-                                    </a>
-                                    <div class="item-info">
-                                        <div class="service-user">
-                                            <a href="#">
-                                                <img src="~/PublicFront/assets/img/customer/user-06.jpg" alt="">
-                                            </a>
-                                            <span class="service-price">80 Azn</span>
-                                        </div>
-                                        <div class="cate-list">
-                                            <a class="bg-yellow" href="service-details.html">Kompüter</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="service-content">
-                                    <h3 class="title">
-                                        <a href="service-details.html">Kompüter və Server Xidməti</a>
-                                    </h3>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span class="d-inline-block average-rating">(0)</span>
-                                    </div>
-                                    <div class="user-info">
-                                        <div class="row">
-                                            <span class="col-auto ser-contact"><i class="fas fa-phone mr-1"></i> <span>xxxxxxxx92</span></span>
-                                            <span class="col ser-location"><span>Baki, N.Nerimanov</span>  <i class="fas fa-map-marker-alt ml-1"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="service-widget">
-                                <div class="service-img">
-                                    <a href="service-details.html">
-                                        <img class="img-fluid serv-img" alt="Service Image" src="~/PublicFront/assets/img/services/service-07.jpg">
-                                    </a>
-                                    <div class="item-info">
-                                        <div class="service-user">
-                                            <a href="#">
-                                                <img src="~/PublicFront/assets/img/customer/user-07.jpg" alt="">
-                                            </a>
-                                            <span class="service-price">20 Azn</span>
-                                        </div>
-                                        <div class="cate-list">
-                                            <a class="bg-yellow" href="service-details.html">Interyer</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="service-content">
-                                    <h3 class="title">
-                                        <a href="service-details.html">Daxili dizayn</a>
-                                    </h3>
-                                    <div class="rating">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span class="d-inline-block average-rating">(4)</span>
-                                    </div>
-                                    <div class="user-info">
-                                        <div class="row">
-                                            <span class="col-auto ser-contact"><i class="fas fa-phone mr-1"></i> <span>xxxxxxxx28</span></span>
-                                            <span class="col ser-location"><span>Baki, Qaradag</span>  <i class="fas fa-map-marker-alt ml-1"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="service-widget">
-                                <div class="service-img">
-                                    <a href="service-details.html">
-                                        <img class="img-fluid serv-img" alt="Service Image" src="~/PublicFront/assets/img/services/service-08.jpg">
-                                    </a>
-                                    <div class="item-info">
-                                        <div class="service-user">
-                                            <a href="#">
-                                                <img src="~/PublicFront/assets/img/customer/user-08.jpg" alt="">
-                                            </a>
-                                            <span class="service-price">75 Azn</span>
-                                        </div>
-                                        <div class="cate-list">
-                                            <a class="bg-yellow" href="service-details.html">
-                                                Tikinti
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="service-content">
-                                    <h3 class="title">
-                                        <a href="service-details.html">Bina ve Ev Tikinti xidmətləri</a>
-                                    </h3>
-                                    <div class="rating">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span class="d-inline-block average-rating">(4)</span>
-                                    </div>
-                                    <div class="user-info">
-                                        <div class="row">
-                                            <span class="col-auto ser-contact"><i class="fas fa-phone mr-1"></i> <span>xxxxxxxx62</span></span>
-                                            <span class="col ser-location"><span>Baki, Ehmedli</span>  <i class="fas fa-map-marker-alt ml-1"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="service-widget">
-                                <div class="service-img">
-                                    <a href="service-details.html">
-                                        <img class="img-fluid serv-img" alt="Service Image" src="~/PublicFront/assets/img/services/service-09.jpg">
-                                    </a>
-                                    <div class="item-info">
-                                        <div class="service-user">
-                                            <a href="#">
-                                                <img src="~/PublicFront/assets/img/customer/user-09.jpg" alt="">
-                                            </a>
-                                            <span class="service-price">45 Azn</span>
-                                        </div>
-                                        <div class="cate-list">
-                                            <a class="bg-yellow" href="service-details.html">Boyakarlıq</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="service-content">
-                                    <h3 class="title">
-                                        <a href="service-details.html">Boyakarlıq Xidmətləri</a>
-                                    </h3>
-                                    <div class="rating">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span class="d-inline-block average-rating">(3)</span>
-                                    </div>
-                                    <div class="user-info">
-                                        <div class="row">
-                                            <span class="col-auto ser-contact"><i class="fas fa-phone mr-1"></i> <span>xxxxxxxx75</span></span>
-                                            <span class="col ser-location"><span>Baki, Səbail</span>  <i class="fas fa-map-marker-alt ml-1"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="service-widget">
-                                <div class="service-img">
-                                    <a href="service-details.html">
-                                        <img class="img-fluid serv-img" alt="Service Image" src="~/PublicFront/assets/img/services/service-10.jpg">
-                                    </a>
-                                    <div class="item-info">
-                                        <div class="service-user">
-                                            <a href="#">
-                                                <img src="~/PublicFront/assets/img/customer/user-10.jpg" alt="">
-                                            </a>
-                                            <span class="service-price">15 Azn</span>
-                                        </div>
-                                        <div class="cate-list">
-                                            <a class="bg-yellow" href="service-details.html">Santexnika</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="service-content">
-                                    <h3 class="title">
-                                        <a href="service-details.html">Santexnika Xidmətləri</a>
-                                    </h3>
-                                    <div class="rating">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span class="d-inline-block average-rating">(3)</span>
-                                    </div>
-                                    <div class="user-info">
-                                        <div class="row">
-                                            <span class="col-auto ser-contact"><i class="fas fa-phone mr-1"></i> <span>xxxxxxxx13</span></span>
-                                            <span class="col ser-location"><span>Baki, Tagiyev</span> <i class="fas fa-map-marker-alt ml-1"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="service-widget">
-                                <div class="service-img">
-                                    <a href="service-details.html">
-                                        <img class="img-fluid serv-img" alt="Service Image" src="~/PublicFront/assets/img/services/service-11.jpg">
-                                    </a>
-                                    <div class="item-info">
-                                        <div class="service-user">
-                                            <a href="#">
-                                                <img src="~/PublicFront/assets/img/customer/user-01.jpg" alt="">
-                                            </a>
-                                            <span class="service-price">$32</span>
-                                        </div>
-                                        <div class="cate-list">
-                                            <a class="bg-yellow" href="service-details.html">Dülgərlik</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="service-content">
-                                    <h3 class="title">
-                                        <a href="service-details.html">Taxta Dülgərlik İşi</a>
-                                    </h3>
-                                    <div class="rating">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <span class="d-inline-block average-rating">(5)</span>
-                                    </div>
-                                    <div class="user-info">
-                                        <div class="row">
-                                            <span class="col-auto ser-contact"><i class="fas fa-phone mr-1"></i> <span>xxxxxxxx68</span></span>
-                                            <span class="col ser-location"><span>Baki, Qobu</span> <i class="fas fa-map-marker-alt ml-1"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="service-widget">
-                                <div class="service-img">
-                                    <a href="service-details.html">
-                                        <img class="img-fluid serv-img" alt="Service Image" src="~/PublicFront/assets/img/services/service-12.jpg">
-                                    </a>
-                                    <div class="item-info">
-                                        <div class="service-user">
-                                            <a href="#">
-                                                <img src="~/PublicFront/assets/img/customer/user-02.jpg" alt="">
-                                            </a>
-                                            <span class="service-price">$54</span>
-                                        </div>
-                                        <div class="cate-list">
-                                            <a class="bg-yellow" href="service-details.html">Kondisioner</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="service-content">
-                                    <h3 class="title">
-                                        <a href="service-details.html">Kondisioner xidməti</a>
-                                    </h3>
-                                    <div class="rating">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span class="d-inline-block average-rating">(3)</span>
-                                    </div>
-                                    <div class="user-info">
-                                        <div class="row">
-                                            <span class="col-auto ser-contact"><i class="fas fa-phone mr-1"></i> <span>xxxxxxxx71</span></span>
-                                            <span class="col ser-location"><span>Baki, Bakixanov</span> <i class="fas fa-map-marker-alt ml-1"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>

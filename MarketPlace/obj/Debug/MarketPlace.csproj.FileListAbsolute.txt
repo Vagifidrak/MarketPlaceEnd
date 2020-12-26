@@ -106,3 +106,7 @@ C:\Users\Tural\source\repos\MarketPlace\MarketPlace\obj\Debug\MarketPlace.csproj
 C:\Users\Tural\source\repos\MarketPlace\MarketPlace\obj\Debug\MarketPlace.csproj.CopyComplete
 C:\Users\Tural\source\repos\MarketPlace\MarketPlace\obj\Debug\MarketPlace.dll
 C:\Users\Tural\source\repos\MarketPlace\MarketPlace\obj\Debug\MarketPlace.pdb
+C:\Users\Tural\source\repos\MarketPlace\MarketPlace\obj\Debug\MarketPlace.Migrations.Initial.resources
+C:\Users\Tural\source\repos\MarketPlace\MarketPlace\obj\Debug\MarketPlace.csproj.GenerateResource.cache
+C:\Users\Tural\source\repos\MarketPlace\MarketPlace\obj\Debug\MarketPlace.Migrations.serviscategoryChange.resources
+C:\Users\Tural\source\repos\MarketPlace\MarketPlace\obj\Debug\MarketPlace.Migrations.requiredDeleted.resources

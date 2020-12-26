@@ -169,6 +169,12 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\AdmiMarketPlace\AdmiMarketPlaceAreaRegistration.cs" />
+    <Compile Include="Areas\AdmiMarketPlace\Controllers\AdminCategoryController.cs" />
+    <Compile Include="Areas\AdmiMarketPlace\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\AdmiMarketPlace\Controllers\AdminProvidersController.cs" />
+    <Compile Include="Areas\AdmiMarketPlace\Controllers\AdminServicesController.cs" />
+    <Compile Include="Areas\AdmiMarketPlace\Controllers\AdminUsersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\FeaturedCategoryController.cs" />
@@ -181,22 +187,120 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\SeoHelper.cs" />
+    <Compile Include="Migrations\202012261836186_Initial.cs" />
+    <Compile Include="Migrations\202012261836186_Initial.Designer.cs">
+      <DependentUpon>202012261836186_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012261839324_serviscategoryChange.cs" />
+    <Compile Include="Migrations\202012261839324_serviscategoryChange.Designer.cs">
+      <DependentUpon>202012261839324_serviscategoryChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012261928385_requiredDeleted.cs" />
+    <Compile Include="Migrations\202012261928385_requiredDeleted.Designer.cs">
+      <DependentUpon>202012261928385_requiredDeleted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\Service_To_User.cs" />
     <Compile Include="Models\tbl_blog.cs" />
     <Compile Include="Models\tbl_blogcategory.cs" />
     <Compile Include="Models\tbl_photo.cs" />
     <Compile Include="Models\tbl_servicecategory.cs" />
-    <Compile Include="Models\tbl_serviceprovider.cs" />
     <Compile Include="Models\tbl_services.cs" />
-    <Compile Include="Models\tbl_user.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utilites\ServiceEnum.cs" />
     <Compile Include="ViewModel\HomeVM.cs" />
+    <Compile Include="ViewModel\RegisterViewModel.cs" />
+    <Compile Include="ViewModel\ServiceVM.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\css\admin.css" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\css\animate.min.css" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\css\select2.min.css" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\category\category-01.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\category\category-02.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\category\category-03.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\category\category-04.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\category\category-05.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\category\category-06.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\category\category-07.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\category\category-08.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\category\category-09.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\customer\user-01.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\customer\user-02.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\customer\user-03.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\customer\user-04.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\customer\user-05.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\customer\user-06.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\customer\user-07.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\customer\user-08.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\customer\user-09.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\customer\user-10.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\favicon.png" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\logo-icon.png" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\logo.png" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\provider\provider-01.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\provider\provider-02.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\provider\provider-03.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\provider\provider-04.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\provider\provider-05.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\provider\provider-06.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\provider\provider-07.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\provider\provider-08.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\provider\provider-09.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\provider\provider-10.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\services\service-01.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\services\service-02.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\services\service-03.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\services\service-04.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\services\service-05.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\services\service-06.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\services\service-07.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\services\service-08.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\services\service-09.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\services\service-10.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\services\service-11.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\services\service-12.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\sub-category\sub-category-01.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\sub-category\sub-category-02.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\sub-category\sub-category-03.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\sub-category\sub-category-04.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\sub-category\sub-category-05.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\sub-category\sub-category-06.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\sub-category\sub-category-07.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\sub-category\sub-category-08.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\sub-category\sub-category-09.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\sub-category\sub-category-10.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\img\user.jpg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\js\admin.js" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\js\bootstrapValidator.min.html" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\js\jquery-3.5.0.min.js" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\js\moment.min.js" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\js\popper.min.js" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\js\select2.min.js" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\datatables\datatables.min.css" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\datatables\datatables.min.js" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\datatables\jquery.dataTables.min.js" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\css\all.min.css" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\css\fontawesome.min.css" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-brands-400.html" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-brands-400.svg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-regular-400.html" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-regular-400.svg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-solid-900.html" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-solid-900.svg" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\owlcarousel\owl.carousel.min.css" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\owlcarousel\owl.carousel.min.js" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\owlcarousel\owl.theme.default.min.css" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\owlcarousel\owl.video.play.png" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\slimscroll\jquery.slimscroll.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -297,6 +401,33 @@
     <Content Include="PublicFront\assets\plugins\fontawesome\webfonts\fa-solid-900.eot" />
     <Content Include="PublicFront\assets\plugins\fontawesome\webfonts\fa-solid-900.ttf" />
     <Content Include="PublicFront\assets\plugins\fontawesome\webfonts\fa-solid-900.woff" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\fonts\CircularStd-Black.woff" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\fonts\CircularStd-BlackItalic.woff" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\fonts\CircularStd-Bold.woff" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\fonts\CircularStd-BoldItalic.woff" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\fonts\CircularStd-Book.woff" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\fonts\CircularStd-BookItalic.woff" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\fonts\CircularStd-Medium.woff" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\fonts\CircularStd-MediumItalic.woff" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-brands-400.eot" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-brands-400.ttf" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-brands-400.woff" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-brands-400d41d.eot" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-regular-400.eot" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-regular-400.ttf" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-regular-400.woff" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-regular-400d41d.eot" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-solid-900.eot" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-solid-900.ttf" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-solid-900.woff" />
+    <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-solid-900d41d.eot" />
+    <Content Include="Areas\AdmiMarketPlace\Views\AdminCategory\Index.cshtml" />
+    <Content Include="Areas\AdmiMarketPlace\Views\AdminHome\Index.cshtml" />
+    <Content Include="Areas\AdmiMarketPlace\Views\AdminProviders\Index.cshtml" />
+    <Content Include="Areas\AdmiMarketPlace\Views\AdminServices\Index.cshtml" />
+    <Content Include="Areas\AdmiMarketPlace\Views\AdminUsers\Index.cshtml" />
+    <Content Include="Areas\AdmiMarketPlace\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\AdmiMarketPlace\Views\web.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -350,9 +481,11 @@
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Shared\ServiceList.cshtml" />
     <Content Include="Views\Service\ServiceDetail.cshtml" />
+    <Content Include="Views\Shared\_Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\RegisterPartial\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -366,6 +499,17 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202012261836186_Initial.resx">
+      <DependentUpon>202012261836186_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012261839324_serviscategoryChange.resx">
+      <DependentUpon>202012261839324_serviscategoryChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012261928385_requiredDeleted.resx">
+      <DependentUpon>202012261928385_requiredDeleted.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

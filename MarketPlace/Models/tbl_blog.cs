@@ -30,6 +30,6 @@ namespace MarketPlace.Models
 
         public virtual tbl_photo tbl_photo { get; set; }
 
-        public virtual tbl_user tbl_user { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

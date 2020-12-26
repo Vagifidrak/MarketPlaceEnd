@@ -23,7 +23,7 @@
                         @foreach (var x in Model)
                         {
                             <div class="col-lg-4 col-md-6">
-                                <a href="search.html">
+                                <a href="@Url.Action("ServiceList","Categories",new { id=x.ServiceCategoryId})">
                                     <div class="cate-widget">
                                         <img src="@x.tbl_photo.URL" alt="">
                                         <div class="cate-title">
@@ -36,75 +36,6 @@
                                 </a>
                             </div>
                         }
-                        <div class="col-lg-4 col-md-6">
-                            <a href="search.html">
-                                <div class="cate-widget">
-                                    <img src="~/PublicFront/assets/img/category/category-02.jpg" alt="">
-                                    <div class="cate-title">
-                                        <h3><span><i class="fas fa-circle"></i> Interyer</span></h3>
-                                    </div>
-                                    <div class="cate-count">
-                                        <i class="fas fa-clone"></i> 15
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <a href="search.html">
-                                <div class="cate-widget">
-                                    <img src="~/PublicFront/assets/img/category/category-02.jpg" alt="">
-                                    <div class="cate-title">
-                                        <h3><span><i class="fas fa-circle"></i> Avtomobil təmiri</span></h3>
-                                    </div>
-                                    <div class="cate-count">
-                                        <i class="fas fa-clone"></i> 15
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <a href="search.html">
-                                <div class="cate-widget">
-                                    <img src="~/PublicFront/assets/img/category/category-04.jpg" alt="">
-                                    <div class="cate-title">
-                                        <h3><span><i class="fas fa-circle"></i> Təmizlik</span></h3>
-                                    </div>
-                                    <div class="cate-count">
-                                        <i class="fas fa-clone"></i> 14
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <a href="search.html">
-                                <div class="cate-widget">
-                                    <img src="~/PublicFront/assets/img/category/category-05.jpg" alt="">
-                                    <div class="cate-title">
-                                        <h3><span><i class="fas fa-circle"></i> Elektrik</span></h3>
-                                    </div>
-                                    <div class="cate-count">
-                                        <i class="fas fa-clone"></i> 10
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <a href="search.html">
-                                <div class="cate-widget">
-                                    <img src="~/PublicFront/assets/img/category/category-06.jpg" alt="">
-                                    <div class="cate-title">
-                                        <h3>
-                                            <span>
-                                                <i class="fas fa-circle"></i> Tikinti
-                                            </span>
-                                        </h3>
-                                    </div>
-                                    <div class="cate-count">
-                                        <i class="fas fa-clone"></i> 8
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>

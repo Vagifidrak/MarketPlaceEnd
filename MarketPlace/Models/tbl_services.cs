@@ -14,19 +14,13 @@ namespace MarketPlace.Models
         [StringLength(150)]
         public string Name { get; set; }
 
-        public int? Price { get; set; }
+        public decimal? Price { get; set; }
 
         public string Context { get; set; }
 
         public int? ServiceCategoryId { get; set; }
 
-        public int? ServiceProviderId { get; set; }
-
-        public int? CustomerId { get; set; }
-
         public DateTime? Date { get; set; }
-
-        public int? GunerzindeSaat { get; set; }
 
         public string Note { get; set; }
 
@@ -34,20 +28,12 @@ namespace MarketPlace.Models
 
         public int? Baxis { get; set; }
 
-        [StringLength(500)]
-        public string Aciqlama { get; set; }
-
-        [StringLength(500)]
-        public string Xidmetler { get; set; }
-
-        public bool? Aktiv { get; set; }
+        public bool? Active { get; set; }
 
         public virtual tbl_photo tbl_photo { get; set; }
 
         public virtual tbl_servicecategory tbl_servicecategory { get; set; }
+        public virtual ICollection<Service_To_User> ServiceToUsers { get; set; }
 
-        public virtual tbl_serviceprovider tbl_serviceprovider { get; set; }
-
-        public virtual tbl_user tbl_user { get; set; }
     }
 }

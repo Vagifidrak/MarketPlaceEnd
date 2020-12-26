@@ -4,9 +4,33 @@ namespace MarketPlace.Models
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using System.Security.Claims;
+    using Microsoft.AspNet.Identity;
+    using System.Threading.Tasks;
+    using System.Collections.Generic;
 
-    public partial class Model1 : DbContext
+    public class ApplicationUser : IdentityUser
     {
+        public DateTime? registerTime{ get; set; }
+        public int? PhotoId { get; set; }
+        public virtual tbl_photo Photo { get; set; }
+        public string Adress { get; set; }
+        public bool? isActive { get; set; }
+        public string FullName { get; set; }
+        public virtual List<Service_To_User> ServiceToUsers { get; set; }
+
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+        {
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            // Add custom user claims here
+            return userIdentity;
+        }
+    }
+    public partial class Model1 : IdentityDbContext<ApplicationUser>
+    {
+      
         public Model1()
             : base("name=marketplaceDB")
         {
@@ -16,16 +40,23 @@ namespace MarketPlace.Models
         public virtual DbSet<tbl_blogcategory> tbl_blogcategory { get; set; }
         public virtual DbSet<tbl_photo> tbl_photo { get; set; }
         public virtual DbSet<tbl_servicecategory> tbl_servicecategory { get; set; }
-        public virtual DbSet<tbl_serviceprovider> tbl_serviceprovider { get; set; }
+        public virtual DbSet<Service_To_User> Service_To_User{ get; set; }
         public virtual DbSet<tbl_services> tbl_services { get; set; }
-        public virtual DbSet<tbl_user> tbl_user { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+
+        protected override void OnModelCreating(DbModelBuilder dbModelBuilder)
         {
-            modelBuilder.Entity<tbl_user>()
-                .HasMany(e => e.tbl_services)
-                .WithOptional(e => e.tbl_user)
-                .HasForeignKey(e => e.CustomerId);
+            base.OnModelCreating(dbModelBuilder);
+            dbModelBuilder.Entity<ApplicationUser>().ToTable("Users");
+            dbModelBuilder.Entity<IdentityRole>().ToTable("Roles");
+            dbModelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
+            dbModelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims");
+            dbModelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins");
+
+        }
+        public static Model1 Create()
+        {
+            return new Model1();
         }
     }
 }

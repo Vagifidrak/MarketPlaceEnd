@@ -12,15 +12,18 @@ namespace MarketPlace.Controllers
     {
         Model1 db = new Model1();
         // GET: Service
-        public ActionResult Index()
+        public ActionResult Index(string searchTerm)
         {
+            //HomeVM
             return View();
         }
+    
         public ActionResult ServiceDetail(int id)
         {
             HomeVM VM = new HomeVM();
             VM.serviceSingle = db.tbl_services.Where(x => x.ServiceId == id).SingleOrDefault();
             return View(VM);
         }
+        
     }
 }

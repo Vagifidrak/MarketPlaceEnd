@@ -15,7 +15,7 @@ namespace MarketPlace.Models
             tbl_blogcategory = new HashSet<tbl_blogcategory>();
             tbl_servicecategory = new HashSet<tbl_servicecategory>();
             tbl_services = new HashSet<tbl_services>();
-            tbl_user = new HashSet<tbl_user>();
+            ApplicationUsers = new HashSet<ApplicationUser>();
         }
 
         [Key]
@@ -37,6 +37,6 @@ namespace MarketPlace.Models
         public virtual ICollection<tbl_services> tbl_services { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_user> tbl_user { get; set; }
+        public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }
 }
