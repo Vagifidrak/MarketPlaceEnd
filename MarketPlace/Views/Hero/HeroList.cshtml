@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MarketPlace.Models.tbl_servicecategory>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="layer">
+        <div class="home-banner"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="section-search">
+                        <h3>Azerbaycanin ən böyük <span>Isci axtarma platformasi</span></h3>
+                        <p>Ehtiyaciniza uygun tecrubeli mutexessislerin axtarisini edin</p>
+                        <div class="search-box">
+                            <form action="https://MarketPlace-html.dreamguystech.com/template/search.html">
+                                <div class="search-input line">
+                                    <i class="fas fa-tv bficon"></i>
+                                    <div class="form-group mb-0">
+                                        <input type="text" class="form-control" placeholder="Nə axtarırsan?">
+                                    </div>
+                                </div>
+                                <div class="search-input">
+                                    <i class="fas fa-location-arrow bficon"></i>
+                                    <div class="form-group mb-0">
+                                        <input type="text" class="form-control" placeholder="Yeriniz">
+                                        <a class="current-loc-icon current_location" href="javascript:void(0);"><i class="fas fa-crosshairs"></i></a>
+                                    </div>
+                                </div>
+                                <div class="search-btn">
+                                    <button class="btn search_service" type="submit">Axtar</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="search-cat">
+                            <i class="fas fa-circle"></i>
+                            <span>Populyar axtarışlar</span>
+                            @foreach (var x in Model)
+                            {
+                                <a href="search.html">@x.Name</a>
+                            }
+                            <a href="search.html">Boru texniki</a>
+                            <a href="search.html">Temizlikci</a>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section -->

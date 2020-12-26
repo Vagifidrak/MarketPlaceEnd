@@ -1,0 +1,172 @@
+﻿@model IEnumerable<MarketPlace.Models.tbl_servicecategory>
+@{
+    ViewBag.Title = "Kateqoriyalar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="breadcrumb-title">
+                    <h2>Kateqoriyalar</h2>
+                </div>
+            </div>
+            <div class="col-auto float-right ml-auto breadcrumb-menu">
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">Ana sehife</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Kateqoriyalar</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Breadcrumb -->
+
+<div class="content">
+    <div class="container">
+        <div class="catsec clearfix">
+            <div class="row">
+                @foreach (var x in Model)
+                {
+                    <div class="col-lg-4 col-md-6">
+                        <a href="@Url.Action("ServiceList",new { id=x.ServiceCategoryId})">
+                            <div class="cate-widget">
+                                <img src="@x.tbl_photo.URL" alt="@x.Name">
+                                <div class="cate-title">
+                                    <h3><span><i class="fas fa-circle"></i> @x.Name</span></h3>
+                                </div>
+                                <div class="cate-count">
+                                    <i class="fas fa-clone"></i> @x.tbl_services.Count()
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+                <div class="col-lg-4 col-md-6">
+                    <a href="search.html">
+                        <div class="cate-widget">
+                            <img src="~/PublicFront/assets/img/category/category-02.jpg" alt="">
+                            <div class="cate-title">
+                                <h3><span><i class="fas fa-circle"></i> Interyer</span></h3>
+                            </div>
+                            <div class="cate-count">
+                                <i class="fas fa-clone"></i> 15
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <a href="search.html">
+                        <div class="cate-widget">
+                            <img src="~/PublicFront/assets/img/category/category-03.jpg" alt="">
+                            <div class="cate-title">
+                                <h3><span><i class="fas fa-circle"></i> Avtomobil</span></h3>
+                            </div>
+                            <div class="cate-count">
+                                <i class="fas fa-clone"></i> 15
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <a href="search.html">
+                        <div class="cate-widget">
+                            <img src="~/PublicFront/assets/img/category/category-04.jpg" alt="">
+                            <div class="cate-title">
+                                <h3><span><i class="fas fa-circle"></i> Təmizlik</span></h3>
+                            </div>
+                            <div class="cate-count">
+                                <i class="fas fa-clone"></i> 14
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <a href="search.html">
+                        <div class="cate-widget">
+                            <img src="~/PublicFront/assets/img/category/category-05.jpg" alt="">
+                            <div class="cate-title">
+                                <h3><span><i class="fas fa-circle"></i> Elektrik</span></h3>
+                            </div>
+                            <div class="cate-count">
+                                <i class="fas fa-clone"></i> 10
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <a href="search.html">
+                        <div class="cate-widget">
+                            <img src="~/PublicFront/assets/img/category/category-06.jpg" alt="">
+                            <div class="cate-title">
+                                <h3>
+                                    <span>
+                                        <i class="fas fa-circle"></i> Tikinti
+                                    </span>
+                                </h3>
+                            </div>
+                            <div class="cate-count">
+                                <i class="fas fa-clone"></i> 8
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <a href="search.html">
+                        <div class="cate-widget">
+                            <img src="~/PublicFront/assets/img/category/category-07.jpg" alt="">
+                            <div class="cate-title">
+                                <h3><span><i class="fas fa-circle"></i> Santexnika</span></h3>
+                            </div>
+                            <div class="cate-count">
+                                <i class="fas fa-clone"></i> 18
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <a href="search.html">
+                        <div class="cate-widget">
+                            <img src="~/PublicFront/assets/img/category/category-08.jpg" alt="">
+                            <div class="cate-title">
+                                <h3><span><i class="fas fa-circle"></i> Dülgərlik</span></h3>
+                            </div>
+                            <div class="cate-count">
+                                <i class="fas fa-clone"></i> 32
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <a href="search.html">
+                        <div class="cate-widget">
+                            <img src="~/PublicFront/assets/img/category/category-09.jpg" alt="">
+                            <div class="cate-title">
+                                <h3><span><i class="fas fa-circle"></i>Kondisioner</span></h3>
+                            </div>
+                            <div class="cate-count">
+                                <i class="fas fa-clone"></i> 19
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="pagination">
+                <ul>
+                    <li class="active"><a href="javascript:void(0);">1</a></li>
+                    <li><a href="javascript:void(0);">2</a></li>
+                    <li><a href="javascript:void(0);">3</a></li>
+                    <li><a href="javascript:void(0);">4</a></li>
+                    <li class="arrow"><a href="javascript:void(0);"><i class="fas fa-angle-right"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>﻿
+</div>﻿ 

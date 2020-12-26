@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--~~~~  HERO ~~~~-->
+@{
+    Html.RenderAction("HeroList", "Hero");
+}
+
+<!--~~~~  HERO ~~~~-->
+<!--~~~~  FeaturedCategories ~~~~-->
+@{
+    Html.RenderAction("FeaturedCategories", "FeaturedCategory");
+}
+
+<!--~~~~  FeaturedCategories ~~~~-->
+
+@{ 
+    Html.RenderAction("PopularServisler", "PopularServices");
+}
+
+@{ 
+    Html.RenderAction("HowItWorks", "Home");
+}
