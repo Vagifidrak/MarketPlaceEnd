@@ -9,8 +9,8 @@ namespace MarketPlace.Models
     {
         public int Id { get; set; }
         public int serviceId { get; set; }  
-        public int userId { get; set; } 
+        public string userId { get; set; } 
         public virtual tbl_services Services { get; set; }
-        public virtual ApplicationUser ApplicationUser { get; set; }
+       
     }
 }

@@ -62,18 +62,17 @@
                     </div>
                     <ul class="main-nav">
                         <li class="active">
-                            <a href="index.html">Ana sehife</a>
+                            <a href="/">Ana sehife</a>
                         </li>
                         <li>
-                            <a href="categories.html">Kateqoriyalar</a>
+                            <a href="/Categories/Kateqoriyalar">Kateqoriyalar</a>
                         </li>
                         <li class="has-submenu">
                             <a href="#">Diger<i class="fas fa-chevron-down"></i></a>
                             <ul class="submenu">
-                                <li><a href="search.html">Axtarış</a></li>
-                                <li><a href="service-details.html">Xidmət məlumatları</a></li>
-                                <li><a href="chat.html">Çat</a></li>
-                                <li><a href="about-us.html">Bizim haqqımızda</a></li>
+                                <li><a href="@Url.Action("ServiceList","Service")">Axtarış</a></li>
+                                <li><a href="@Url.Action("Chat","Home")">Çat</a></li>
+                                <li><a href="/Home/About">Bizim haqqımızda</a></li>
                             </ul>
                         </li>
                         <li>
@@ -88,32 +87,37 @@
 
                     @if (Request.IsAuthenticated)
                     {
+                        <li class="nav-item desc-list">
+                            <a href="/Service/AddService" class="nav-link header-login">
+                                <i class="fas fa-plus-circle mr-1"></i> <span>Post a Service</span>
+                            </a>
+                        </li>
                         <!-- User Menu -->
                         <li class="nav-item dropdown has-arrow logged-item">
                             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
                                 <span class="user-img">
-                                    <img class="rounded-circle" src="assets/img/provider/provider-01.jpg" alt="" width="31">
+                                    <img class="rounded-circle" src="~/Upload/images/tural.jpeg" alt="" width="31">
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="user-header">
                                     <div class="avatar avatar-sm">
-                                        <img class="avatar-img rounded-circle" src="assets/img/provider/provider-01.jpg" alt="">
+                                        <img class="avatar-img rounded-circle" src="~/Upload/images/tural.jpeg" alt="">
                                     </div>
                                     <div class="user-text">
                                         <h6 class="text-truncate">@User.Identity.Name</h6>
                                         <p class="text-muted mb-0">Provider</p>
                                     </div>
                                 </div>
-                                
-                                    <a class="dropdown-item" href="provider-dashboard.html">Dashboard</a>
-                                    <a class="dropdown-item" href="my-services.html">My Services</a>
-                                    <a class="dropdown-item" href="provider-bookings.html">Booking List</a>
-                                    <a class="dropdown-item" href="provider-settings.html">Profile Settings</a>
-                                    <a class="dropdown-item" href="provider-wallet.html">Wallet</a>
-                                    <a class="dropdown-item" href="provider-subscription.html">Subscription</a>
-                                    <a class="dropdown-item" href="provider-availability.html">Availability</a>
-                                    <a class="dropdown-item" href="chat.html">Chat</a>
+
+                                <a class="dropdown-item" href="provider-dashboard.html">Dashboard</a>
+                                <a class="dropdown-item" href="my-services.html">My Services</a>
+                                @*<a class="dropdown-item" href="provider-bookings.html">Booking List</a>
+                                <a class="dropdown-item" href="provider-settings.html">Profile Settings</a>
+                                <a class="dropdown-item" href="provider-wallet.html">Wallet</a>
+                                <a class="dropdown-item" href="provider-subscription.html">Subscription</a>
+                                <a class="dropdown-item" href="provider-availability.html">Availability</a>*@
+                                <a class="dropdown-item" href="chat.html">Chat</a>
                                 <form method="post" id="logoutForm" action="/Account/Logoff/">
                                     @Html.AntiForgeryToken()
                                     <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Logout</a>

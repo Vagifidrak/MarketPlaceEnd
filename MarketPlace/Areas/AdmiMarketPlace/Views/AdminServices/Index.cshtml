@@ -1,8 +1,81 @@
-﻿
+﻿@model IEnumerable<MarketPlace.Models.tbl_services>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/AdmiMarketPlace/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Xidmetler</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_photo.URL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_servicecategory.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Context)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Baxis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img  width="100" src="@Html.DisplayFor(modelItem => item.tbl_photo.URL)" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_servicecategory.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Context)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Baxis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ServiceId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ServiceId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ServiceId })
+        </td>
+    </tr>
+}
+
+</table>

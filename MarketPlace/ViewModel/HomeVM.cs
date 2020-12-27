@@ -12,6 +12,7 @@ namespace MarketPlace.ViewModel
         public tbl_servicecategory servicecategorySingle { get; set; }
         public tbl_services serviceSingle { get; set; }
         public List<tbl_services> services{ get; set; }
+        public ApplicationUser singleUser { get; set; }
 
 
     }

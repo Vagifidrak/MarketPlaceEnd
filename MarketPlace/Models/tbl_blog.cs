@@ -24,7 +24,7 @@ namespace MarketPlace.Models
 
         public int? PhotoId { get; set; }
 
-        public int? UserId { get; set; }
+        public string UserId { get; set; }
 
         public virtual tbl_blogcategory tbl_blogcategory { get; set; }
 

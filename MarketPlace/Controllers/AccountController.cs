@@ -170,7 +170,7 @@ namespace MarketPlace.Controllers
                 }
                 else
                 {
-jsonResult.Data = new
+                    jsonResult.Data = new
                 {
                     Success = false,
                     Messages = string.Join("<br/>", result.Errors)

@@ -110,3 +110,4 @@ C:\Users\Tural\source\repos\MarketPlace\MarketPlace\obj\Debug\MarketPlace.Migrat
 C:\Users\Tural\source\repos\MarketPlace\MarketPlace\obj\Debug\MarketPlace.csproj.GenerateResource.cache
 C:\Users\Tural\source\repos\MarketPlace\MarketPlace\obj\Debug\MarketPlace.Migrations.serviscategoryChange.resources
 C:\Users\Tural\source\repos\MarketPlace\MarketPlace\obj\Debug\MarketPlace.Migrations.requiredDeleted.resources
+C:\Users\Tural\source\repos\MarketPlace\MarketPlace\obj\Debug\MarketPlace.Migrations.changeUserId.resources

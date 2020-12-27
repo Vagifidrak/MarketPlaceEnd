@@ -1,0 +1,21 @@
+﻿@model MarketPlace.ViewModel.UserAddRoleVM
+@{
+    ViewBag.Title = "AddRole";
+    Layout = "~/Areas/AdmiMarketPlace/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>AddRole</h2>
+
+<form method="post" class="w-100">
+    <div class="form-group">
+        <label>Role</label>
+        <select name="role" class="form-control">
+            @foreach (var role in Model.Roles)
+            {
+                <option value="@role">@role</option>
+            }
+        </select>
+    </div>
+    <input type="submit" value="Add Role" class="btn btn-block btn-outline-dark btn-lg" />
+</form>
+

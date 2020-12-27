@@ -199,6 +199,10 @@
     <Compile Include="Migrations\202012261928385_requiredDeleted.Designer.cs">
       <DependentUpon>202012261928385_requiredDeleted.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012270845466_changeUserId.cs" />
+    <Compile Include="Migrations\202012270845466_changeUserId.Designer.cs">
+      <DependentUpon>202012270845466_changeUserId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -215,6 +219,7 @@
     <Compile Include="ViewModel\HomeVM.cs" />
     <Compile Include="ViewModel\RegisterViewModel.cs" />
     <Compile Include="ViewModel\ServiceVM.cs" />
+    <Compile Include="ViewModel\UserAddRoleVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\css\admin.css" />
@@ -421,13 +426,23 @@
     <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-solid-900.ttf" />
     <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-solid-900.woff" />
     <Content Include="Areas\AdmiMarketPlace\AdminFront\assets\plugins\fontawesome\webfonts\fa-solid-900d41d.eot" />
-    <Content Include="Areas\AdmiMarketPlace\Views\AdminCategory\Index.cshtml" />
     <Content Include="Areas\AdmiMarketPlace\Views\AdminHome\Index.cshtml" />
     <Content Include="Areas\AdmiMarketPlace\Views\AdminProviders\Index.cshtml" />
-    <Content Include="Areas\AdmiMarketPlace\Views\AdminServices\Index.cshtml" />
     <Content Include="Areas\AdmiMarketPlace\Views\AdminUsers\Index.cshtml" />
     <Content Include="Areas\AdmiMarketPlace\Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Areas\AdmiMarketPlace\Views\web.config" />
+    <Content Include="Areas\AdmiMarketPlace\Views\AdminUsers\AddRole.cshtml" />
+    <Content Include="Areas\AdmiMarketPlace\Views\AdminUsers\Edit.cshtml" />
+    <Content Include="Areas\AdmiMarketPlace\Views\AdminCategory\Create.cshtml" />
+    <Content Include="Areas\AdmiMarketPlace\Views\AdminCategory\Delete.cshtml" />
+    <Content Include="Areas\AdmiMarketPlace\Views\AdminCategory\Details.cshtml" />
+    <Content Include="Areas\AdmiMarketPlace\Views\AdminCategory\Edit.cshtml" />
+    <Content Include="Areas\AdmiMarketPlace\Views\AdminCategory\Index.cshtml" />
+    <Content Include="Areas\AdmiMarketPlace\Views\AdminServices\Create.cshtml" />
+    <Content Include="Areas\AdmiMarketPlace\Views\AdminServices\Delete.cshtml" />
+    <Content Include="Areas\AdmiMarketPlace\Views\AdminServices\Details.cshtml" />
+    <Content Include="Areas\AdmiMarketPlace\Views\AdminServices\Edit.cshtml" />
+    <Content Include="Areas\AdmiMarketPlace\Views\AdminServices\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -439,6 +454,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Upload\images\tural.jpeg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -482,6 +498,7 @@
     <Content Include="Views\Shared\ServiceList.cshtml" />
     <Content Include="Views\Service\ServiceDetail.cshtml" />
     <Content Include="Views\Shared\_Register.cshtml" />
+    <Content Include="Views\Service\AddService.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -509,6 +526,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012261928385_requiredDeleted.resx">
       <DependentUpon>202012261928385_requiredDeleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012270845466_changeUserId.resx">
+      <DependentUpon>202012270845466_changeUserId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

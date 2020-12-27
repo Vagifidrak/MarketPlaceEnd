@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="viewall">
-                            <h4><a href="categories.html">HAMISINA BAXIN <i class="fas fa-angle-right"></i></a></h4>
+                            <h4><a href="/Categories/Kateqoriyalar">HAMISINA BAXIN <i class="fas fa-angle-right"></i></a></h4>
                             <span>Ən məşhur</span>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                         {
                             <div class="service-widget">
                                 <div class="service-img">
-                                    <a href="service-details.html">
+                                    <a href="@Url.Action("ServiceDetail","Service",new { id=x.ServiceId})">
                                         <img class="img-fluid serv-img" alt="Service Image" src="@x.tbl_photo.URL">
                                     </a>
                                     <div class="item-info">

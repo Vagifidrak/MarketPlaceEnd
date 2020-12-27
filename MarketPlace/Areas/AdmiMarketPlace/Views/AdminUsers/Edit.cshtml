@@ -1,0 +1,53 @@
+﻿@using MarketPlace.Models
+@model ApplicationUser
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/AdmiMarketPlace/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h4 class="alert alert-dark text-center w-100">User Information</h4>
+
+<dl>
+    <dt>Username</dt>
+    <dd>@Model.UserName</dd>
+    <dt>Email</dt>
+    <dd>@Model.Email</dd>
+</dl>
+
+<h4 class="alert alert-dark text-center w-100">User Role</h4>
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Role</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @*@{
+            UserManager<ApplicationUser> userManager;
+        }*@
+        @*@foreach (var role in await userManager.GetRolesAsync(Model.Roles))
+        {
+            <tr>
+                <td>@role</td>
+                <td>
+                    @if (role != "Admin")
+                    {
+                        <a asp-action="Delete" asp-route-userid="@Model.Id" asp-route-role="@role" class="btn btn-outline-danger btn-block btn-lg">
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                    }
+                </td>
+            </tr>
+        }*@
+        @*@foreach (var role in Model.Roles)
+        {
+            <tr>
+                <td></td>
+            </tr>
+        }*@
+
+    </tbody>
+</table>

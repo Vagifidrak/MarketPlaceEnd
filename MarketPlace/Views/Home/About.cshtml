@@ -1,7 +1,112 @@
-﻿@{
-    ViewBag.Title = "About";
+﻿
+@{
+    ViewBag.Title = "Haqqimizda";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="breadcrumb-title">
+                    <h2>Haqqimizda</h2>
+                </div>
+            </div>
+            <div class="col-auto float-right ml-auto breadcrumb-menu">
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">About Us</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Breadcrumb -->
 
-<p>Use this area to provide additional information.</p>
+<section class="about-us">
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="about-blk-content">
+                        <h4>Təcrübəli və etibarlı</h4>
+                        <p>Komandamizi Genesis adlandırmağımız heç də təsadüfi deyil. Bu sözün açıqlamasını elə yaradilis studiyanın saytından da öyrənə bilərsiniz. Bizim çalışdığımız gələcəkdə internetə girən hər bir azərbaycanlı işadamının başlanğıc səhifəsini qurmaqdır. Çünki, Azərbaycan informasiya texnologiyaları sahəsinə dövlət səviyyəsində də böyük önəm verməsinə baxmayaraq durum ürəkaçan deyildir.</p>
+                        <p>Hədəfimiz: Sadəcə düzgün və uğurlu internet saytların yaradılması deyil, eyni zamanda kiber müdafiə, sosial marketinq, İT-həllər, yeni texnologiyaların çatdırılması, baza sistemləri, web-audit bazarının yaradılması, mobil texnologiyalarla ayaqlaşma və bu kimi bir çox strateji yollar olacaqdır.</p>
+                        <p>Məqsədimiz: Dizayna, başlıca olaraqsa veb-dizayna baxışı dəyişəcəyik. Bütün bu işlərlə istədiyimiz insanlarımıza lazım olan informasiyanı Azərbaycan dilində çatdırmaqdır. Nə qədər çox biləriksə, o qədər silahlanmış olarıq.</p>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="about-blk-image">
+                        <img src="~/PublicFront/assets/img/about.jpg" class="img-fluid" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="call-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <span>Pulsuz məsləhət</span>
+                <h2>Xəyallarınızdakı layihəyə başlamağa hazırsınız?</h2>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod. Nunc placerat mi id nisi interdum mollis</p>
+            </div>
+            <div class="col-6 call-us-btn">
+                <a href="javascript:void(0);" class="btn btn-call-us">Sorgu gonderin</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="how-work">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="heading howitworks">
+                    <h2>Bu necə işləyir</h2>
+                    <span>Mutexessisinizi size yaxin edirik</span>
+                </div>
+                <div class="howworksec">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="howwork">
+                                <div class="iconround">
+                                    <div class="steps">01</div>
+                                    <img src="~/PublicFront/assets/img/icon-1.png" alt="">
+                                </div>
+                                <h3>Nə edəcəyinizi seçin</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur, laudantium placeat tenetur maxime veniam dicta rem pariatur quis.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="howwork">
+                                <div class="iconround">
+                                    <div class="steps">02</div>
+                                    <img src="~/PublicFront/assets/img/icon-2.png" alt="">
+                                </div>
+                                <h3>İstədiyinizi tapın</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur, laudantium placeat tenetur maxime veniam dicta rem pariatur quis.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="howwork">
+                                <div class="iconround">
+                                    <div class="steps">03</div>
+                                    <img src="~/PublicFront/assets/img/icon-3.png" alt="">
+                                </div>
+                                <h3>Mutexessis yaxinlassin</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur, laudantium placeat tenetur maxime veniam dicta rem pariatur quis.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /How It Works -->

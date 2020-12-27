@@ -25,19 +25,23 @@ namespace MarketPlace.Controllers
         public ActionResult ServiceList(int? id,string searchTerm,int? sortBy)
         {
             sortBy = sortBy.HasValue ? sortBy : 1;
-            if (id == null)
-                return HttpNotFound();
+            //if (id == null)
+            //    services=
             ServiceVM VM = new ServiceVM();
-            VM.services = filterService(searchTerm,(int)id,sortBy);
+            VM.services = filterService(searchTerm,id,sortBy);
             VM.categories = db.tbl_servicecategory.ToList();
             VM.sortBy = sortBy.Value;
             VM.searchTerm = searchTerm;
             //var data = db.tbl_services.Where(x => x.ServiceCategoryId == id).ToList();
             return View("ServiceList",VM);
         }
-        public List<tbl_services> filterService(string searchTerm,int id,int? sortBy)
+        public List<tbl_services> filterService(string searchTerm,int? id,int? sortBy)
         {
-            var service = db.tbl_services.Where(x=>x.ServiceCategoryId==id).AsQueryable();
+            var service = db.tbl_services.AsQueryable();
+            if (id.HasValue)
+            {
+                service = db.tbl_services.Where(x => x.ServiceCategoryId == id);
+            }
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 service = service.Where(x => x.Name.Contains(searchTerm));
