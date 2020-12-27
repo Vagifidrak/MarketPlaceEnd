@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -43,22 +44,33 @@ namespace MarketPlace.Areas.AdmiMarketPlace.Controllers
             return View();
         }
 
-        // POST: AdmiMarketPlace/AdminCategory/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ServiceCategoryId,Name,Description,PhotoId")] tbl_servicecategory tbl_servicecategory)
+        public ActionResult Create([Bind(Include = "ServiceCategoryId,Name,Description,PhotoId")] tbl_servicecategory tbl_servicecategory, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
+                var picture = new tbl_photo();
+                if (image != null)
+                {
+                    string pictureName = Guid.NewGuid().ToString().Replace("-", "");
+                    string imageExtension = Path.GetExtension(Request.Files[0].FileName);
+                    string imageWay = "/Upload/images/" + pictureName + imageExtension;
+                    Request.Files[0].SaveAs(Server.MapPath(imageWay));
+                    picture.URL = imageWay;
+                    db.SaveChanges();
+                }
+
+                var imageCopy = db.tbl_photo.Add(picture);
+                tbl_servicecategory.PhotoId = imageCopy.PhotoId;
                 db.tbl_servicecategory.Add(tbl_servicecategory);
+             
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","AdminCategory");
             }
 
-            ViewBag.PhotoId = new SelectList(db.tbl_photo, "PhotoId", "URL", tbl_servicecategory.PhotoId);
-            return View(tbl_servicecategory);
+            return RedirectToAction("Index", "AdminCategory");
+
         }
 
         // GET: AdmiMarketPlace/AdminCategory/Edit/5
@@ -77,9 +89,6 @@ namespace MarketPlace.Areas.AdmiMarketPlace.Controllers
             return View(tbl_servicecategory);
         }
 
-        // POST: AdmiMarketPlace/AdminCategory/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ServiceCategoryId,Name,Description,PhotoId")] tbl_servicecategory tbl_servicecategory)

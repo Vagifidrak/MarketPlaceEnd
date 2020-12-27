@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -114,12 +120,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -343,6 +343,17 @@
     <Content Include="PublicFront\assets\img\icon-3.png" />
     <Content Include="PublicFront\assets\img\logo-icon.png" />
     <Content Include="PublicFront\assets\img\logo.png" />
+    <Content Include="PublicFront\assets\img\Photos\car.jpg" />
+    <Content Include="PublicFront\assets\img\Photos\carpenter-works-with-tree.jpg" />
+    <Content Include="PublicFront\assets\img\Photos\chef.jpg" />
+    <Content Include="PublicFront\assets\img\Photos\close-up-male-craftsman-stitching-leather-parts.jpg" />
+    <Content Include="PublicFront\assets\img\Photos\instructor.jpg" />
+    <Content Include="PublicFront\assets\img\Photos\mexanik %281%29.jpg" />
+    <Content Include="PublicFront\assets\img\Photos\mexanik %282%29.jpg" />
+    <Content Include="PublicFront\assets\img\Photos\mexanik %283%29.jpg" />
+    <Content Include="PublicFront\assets\img\Photos\teacehr.jpg" />
+    <Content Include="PublicFront\assets\img\Photos\texnik.jpg" />
+    <Content Include="PublicFront\assets\img\Photos\unfinished-jug.jpg" />
     <Content Include="PublicFront\assets\img\provider\provider-01.jpg" />
     <Content Include="PublicFront\assets\img\provider\provider-02.jpg" />
     <Content Include="PublicFront\assets\img\provider\provider-03.jpg" />
@@ -499,6 +510,7 @@
     <Content Include="Views\Service\ServiceDetail.cshtml" />
     <Content Include="Views\Shared\_Register.cshtml" />
     <Content Include="Views\Service\AddService.cshtml" />
+    <Content Include="Views\Home\Chat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -44,9 +44,6 @@ namespace MarketPlace.Areas.AdmiMarketPlace.Controllers
             return View();
         }
 
-        // POST: AdmiMarketPlace/AdminServices/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ServiceId,Name,Price,Context,ServiceCategoryId,Date,Note,PhotoId,Baxis,Active")] tbl_services tbl_services)
@@ -80,9 +77,6 @@ namespace MarketPlace.Areas.AdmiMarketPlace.Controllers
             return View(tbl_services);
         }
 
-        // POST: AdmiMarketPlace/AdminServices/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ServiceId,Name,Price,Context,ServiceCategoryId,Date,Note,PhotoId,Baxis,Active")] tbl_services tbl_services)

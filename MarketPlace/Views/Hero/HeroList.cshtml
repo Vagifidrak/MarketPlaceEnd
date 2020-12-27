@@ -11,11 +11,11 @@
                         <h3>Azerbaycanin ən böyük <span>Isci axtarma platformasi</span></h3>
                         <p>Ehtiyaciniza uygun tecrubeli mutexessislerin axtarisini edin</p>
                         <div class="search-box">
-                            <form action="https://MarketPlace-html.dreamguystech.com/template/search.html">
+                            <form action="@Url.Action("ServiceList","categories")">
                                 <div class="search-input line">
                                     <i class="fas fa-tv bficon"></i>
                                     <div class="form-group mb-0">
-                                        <input type="text" class="form-control" placeholder="Nə axtarırsan?">
+                                        <input name="searchTerm" type="text" class="form-control" placeholder="Nə axtarırsan?">
                                     </div>
                                 </div>
                                 <div class="search-input">
@@ -35,10 +35,8 @@
                             <span>Populyar axtarışlar</span>
                             @foreach (var x in Model)
                             {
-                                <a href="search.html">@x.Name</a>
+                                <a href="@Url.Action("ServiceList","categories",new {id=x.ServiceCategoryId })">@x.Name</a>
                             }
-                            <a href="search.html">Boru texniki</a>
-                            <a href="search.html">Temizlikci</a>
                         </div>  
                     </div>
                 </div>
